@@ -1,0 +1,14 @@
+html, body, #toucharea {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+span {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: url(https://www.svgrepo.com/show/25781/christmas-snowflake.svg) no-repeat;
+  background-size: contain;
+  transition: all 10s;
+}
