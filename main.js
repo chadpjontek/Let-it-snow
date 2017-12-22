@@ -6,10 +6,10 @@ function randomSnowflake() {
   return Math.floor(Math.random() * (20)) + 0;
 }
 function fallDistance() {
-  return Math.floor(Math.random() * 1000) + 2000;
+  return Math.floor(Math.random() * 1000) + 500;
 }
 function rotationSpeed() {
-  return Math.floor(Math.random() * (14401)) + -7200;
+  return Math.floor(Math.random() * (721)) + -360;
 }
 var touchArea = document.getElementById("toucharea");
 
@@ -38,10 +38,12 @@ function snow(e) {
   span.style.top = posY + "px";
   
   touchArea.appendChild(span);
-  
-  span.style.transform = "rotate(" + rotationSpeed() + "deg)"
-  span.style.bottom = fallDistance() + 'px';
 
+  setTimeout(function(){
+    span.style.transform = "rotate(" + rotationSpeed() + "deg)"
+    span.style.top = fallDistance() + posY + 'px';
+  },0)
+ 
   setTimeout(function() {
     span.remove();
   },10000);
