@@ -56,7 +56,7 @@ function snow(e) {
 
   setTimeout(function(){
     span.style.transform = "rotate(" + rotationSpeed() + "deg)"
-    span.style.top = fallDistance() - posY + 'px';
+    span.style.top = fallDistance() + 'px';
   },0)
  
   setTimeout(function() {
