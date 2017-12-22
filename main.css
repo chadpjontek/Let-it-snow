@@ -8,7 +8,6 @@ span {
   position: absolute;
   height: 50px;
   width: 50px;
-  background: url(https://www.svgrepo.com/show/25781/christmas-snowflake.svg) no-repeat;
   background-size: contain;
-  transition: all 10s linear;
+  transition: all 15s linear;
 }
