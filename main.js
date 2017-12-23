@@ -1,4 +1,9 @@
 var docHeight = document.body.clientHeight;
+var music = new Audio('sounds/DeanMartin-LetItSnow.ogg');
+var bells = new Audio('sounds/SleighBells1.mp3');
+
+music.play();
+
 function randomSize() {
   return Math.floor(Math.random() * (91)) + 10;
 }
@@ -12,6 +17,17 @@ function rotationSpeed() {
   return Math.floor(Math.random() * (721)) + -360;
 }
 var touchArea = document.getElementById("toucharea");
+var santa = document.createElement("span");
+santa.className += "santa";
+setInterval(function(){
+  touchArea.appendChild(santa); 
+  setTimeout(function(){
+    bells.play();
+  },1000) 
+  setTimeout(function(){
+    santa.remove();
+  },9500)
+},30000)
 
 touchArea.addEventListener("touchstart", touchSnow);
 
@@ -46,7 +62,7 @@ function snow(e) {
   var span = document.createElement("span");
   var size = randomSize();
   var snowflake = randomSnowflake();
-  span.style.background = "url(svgs/snowflake-" + snowflake + ".svg) no-repeat";
+  span.style.background = "url(images/snowflake-" + snowflake + ".svg) no-repeat";
   span.style.height = size + "px";
   span.style.width = size + "px";
   span.style.left = posX + "px";

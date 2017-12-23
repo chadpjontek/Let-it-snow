@@ -11,3 +11,55 @@ span {
   background-size: contain;
   transition: all 15s linear;
 }
+h1, p {
+  font-family: "Mountains of Christmas Bold";
+  text-align: center;
+  
+}
+h1 {
+  margin: 0px 15px;
+  font-size: 2.5em;
+  color: red;
+  position: relative;
+  top: 30%;
+}
+p {
+  margin: 0px 15px;
+  font-size: 1.5em;
+  color: green;
+  position: relative;
+  top: 40%;
+}
+#toucharea {
+  overflow: hidden;
+}
+.santa {
+  animation-duration: 10s;
+  animation-name: fly;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  background: url(images/santa.gif) no-repeat;
+  background-size: cover;
+  left: 0px;
+  top: 0px;
+  height: 208px;
+  width: 390px
+}
+@keyframes fly {
+  0% {
+    left: -50%;
+    top: -10%;
+    transform: scale(.1);
+  }
+  100% {
+    left: 150%;
+    top: 5%;
+    transform: scale(2);
+  }
+}
+
+@font-face {
+  font-family: "Mountains of Christmas Bold";
+  src: url(fonts/MountainsofChristmas-Bold.ttf);
+}
