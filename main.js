@@ -1,8 +1,19 @@
-var docHeight = document.body.clientHeight;
-var music = new Audio('sounds/DeanMartin-LetItSnow.ogg');
-var bells = new Audio('sounds/SleighBells1.mp3');
+const docHeight = document.body.clientHeight;
 
-music.play();
+const sounds = {
+  music: {
+    sound: new Howl({
+      src: ['sounds/DeanMartin-LetItSnow.ogg']
+    })
+  },
+  bells: {
+    sound: new Howl({
+      src: ['sounds/SleighBells1.mp3']
+    })
+  }
+};
+
+sounds.music.sound.play();
 
 function randomSize() {
   return Math.floor(Math.random() * (91)) + 10;
@@ -22,7 +33,7 @@ santa.className += "santa";
 setInterval(function(){
   touchArea.appendChild(santa); 
   setTimeout(function(){
-    bells.play();
+    sounds.bells.sound.play();
   },1000) 
   setTimeout(function(){
     santa.remove();
