@@ -3,6 +3,7 @@ html, body, #toucharea {
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 span {
   position: absolute;
@@ -29,9 +30,6 @@ p {
   color: green;
   position: relative;
   top: 40%;
-}
-#toucharea {
-  overflow: hidden;
 }
 .santa {
   animation-duration: 10s;
