@@ -31,6 +31,23 @@ p {
   position: relative;
   top: 40%;
 }
+.loading {
+  animation: 3s blinking infinite linear;
+}
+@keyframes blinking {
+  0% {
+    font-size: 1.5em;
+    opacity: 1;
+  }
+  50% {
+    font-size: 1.2em;
+    opacity: 0.1;
+  }
+  100% {
+    font-size: 1.5em;
+    opacity: 1;
+  }
+}
 .santa {
   animation-duration: 10s;
   animation-name: fly;

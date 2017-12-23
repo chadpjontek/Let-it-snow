@@ -13,8 +13,13 @@ const sounds = {
   }
 };
 
-sounds.music.sound.play();
-
+function load() {
+  sounds.music.sound.play();
+  var element = document.getElementById("info");
+  element.classList.remove("loading");
+  element.innerHTML = "Turn sound on and touch the screen or click your mouse.";
+}
+window.onload = load;
 function randomSize() {
   return Math.floor(Math.random() * (91)) + 10;
 }
@@ -32,9 +37,7 @@ var santa = document.createElement("span");
 santa.className += "santa";
 setInterval(function(){
   touchArea.appendChild(santa); 
-  setTimeout(function(){
     sounds.bells.sound.play();
-  },1000) 
   setTimeout(function(){
     santa.remove();
   },9500)
