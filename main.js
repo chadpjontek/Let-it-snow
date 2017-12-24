@@ -1,5 +1,6 @@
 // globals 
 var docHeight = document.body.clientHeight;
+var docWidth = document.body.clientWidth;
 var touchArea = document.getElementById("toucharea");
 var sounds = {
   music: {
@@ -13,29 +14,109 @@ var sounds = {
     })
   }
 };
-// add event listeners for snow, start santa animation, and play music on load
+// add event listeners for snow, start xmas animations, and play music on load
 window.onload = load;
 
 function load() {
-  var santa = document.createElement("span");
-  var info = document.getElementById("info");
   touchArea.addEventListener("touchstart", touchSnow);
   touchArea.addEventListener("touchmove", touchSnow);
   touchArea.addEventListener("mousedown", function() {
     touchArea.addEventListener("mousemove", mouseSnow);
   });         
   touchArea.addEventListener("mouseup", endMouseSnow);
-  info.classList.remove("loading");
-  info.innerHTML = "Turn sound on and touch the screen or click your mouse.";
-  santa.className += "santa";
+
+  // santa spawn
   setInterval(function(){
-    touchArea.appendChild(santa); 
-      sounds.bells.sound.play();
-    setTimeout(function(){
-      santa.remove();
-    },9500)
-  },25000 + randomSpawn())
+    spawnSanta();
+  },20000 + randomSpawn())
+  // gift spawn
+  setInterval(function(){
+    for(var i = 0; i < 6; i++){
+      spawnGifts(i);
+    }
+  },15000 + randomSpawn())
+  // xmas spawn
+  setInterval(function(){
+    for(var i = 0; i < 6; i++){
+      spawnXmas(i);
+    }
+  }, 15000)
+
   sounds.music.sound.play();
+}
+
+function spawnSanta (){
+  var santa = document.createElement("span");
+  santa.className += "santa";
+  touchArea.appendChild(santa); 
+  sounds.bells.sound.play();
+  setTimeout(function(){
+    santa.remove();
+  },9500)
+}
+
+function spawnGifts (i){
+  var gift = document.createElement("span");
+
+  gift.style.background = "url(images/" + i + "-gift.svg) no-repeat";
+  gift.style.height = randomXmasSize() + "px";
+  gift.style.width = randomXmasSize() + "px";
+  gift.style.left = (docWidth * .015) + (i * docWidth * .167) + "px";
+  gift.style.top = docHeight - docHeight * .15 + "px";
+  gift.className += "gift";
+  
+  touchArea.appendChild(gift);
+
+  setTimeout(function() {
+    gift.remove();
+  },10000);
+}
+
+function spawnXmas (i){
+  var xmas = document.createElement("span");
+  var rand = Math.floor(Math.random() * (14)) + 0;
+  switch (rand) {
+    case 0: xmas.style.background = "url(images/0-snowman.svg) no-repeat";
+    break;
+    case 1: xmas.style.background = "url(images/1-snowman.svg) no-repeat";
+    break;
+    case 2: xmas.style.background = "url(images/angel.svg) no-repeat";
+    break;
+    case 3: xmas.style.background = "url(images/bell.svg) no-repeat";
+    break;
+    case 4: xmas.style.background = "url(images/christmas-tree.svg) no-repeat";
+    break;
+    case 5: xmas.style.background = "url(images/drum.svg) no-repeat";
+    break;
+    case 6: xmas.style.background = "url(images/wreath.svg) no-repeat";
+    break;
+    case 7: xmas.style.background = "url(images/elf.svg) no-repeat";
+    break;
+    case 8: xmas.style.background = "url(images/gingerbread-man.svg) no-repeat";
+    break;
+    case 9: xmas.style.background = "url(images/mistletoe.svg) no-repeat";
+    break;
+    case 10: xmas.style.background = "url(images/sled.svg) no-repeat";
+    break;
+    case 11: xmas.style.background = "url(images/sock.svg) no-repeat";
+    break;
+    case 12: xmas.style.background = "url(images/toy-train.svg) no-repeat";
+    break;
+    case 13: xmas.style.background = "url(images/trumpet.svg) no-repeat";
+    break;
+  }
+  xmas.style.height = randomXmasSize() + "px";
+  xmas.style.width = randomXmasSize() + "px";
+  xmas.style.left = (docWidth * .015) + (i * docWidth * .167) + "px";
+  xmas.style.top = docHeight - docHeight * randomY() + "px";
+  xmas.className += "xmas";
+  
+  touchArea.appendChild(xmas);
+  
+  setTimeout(function() {
+    xmas.remove();
+  },10000);
+
 }
 
 function mouseSnow(e){
@@ -79,8 +160,15 @@ function endMouseSnow(e) {
   touchArea.removeEventListener("mousemove", mouseSnow);
 }
 
+function randomY() {
+  return 0.25 + 0.01 * (Math.floor(Math.random() * (56)) + 0);
+}
+
+function randomXmasSize() {
+  return Math.floor(Math.random() * (101)) + 50;
+}
 function randomSpawn() {
-  return Math.floor(Math.random() * (10001)) + 0;
+  return Math.floor(Math.random() * (20001)) + 0;
 }
   
 function randomSize() {

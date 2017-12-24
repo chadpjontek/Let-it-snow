@@ -31,23 +31,7 @@ p {
   position: relative;
   top: 40%;
 }
-.loading {
-  animation: 3s blinking infinite linear;
-}
-@keyframes blinking {
-  0% {
-    font-size: 1.5em;
-    opacity: 1;
-  }
-  50% {
-    font-size: 1.2em;
-    opacity: 0.1;
-  }
-  100% {
-    font-size: 1.5em;
-    opacity: 1;
-  }
-}
+
 .santa {
   animation-duration: 10s;
   animation-name: fly;
@@ -74,6 +58,54 @@ p {
   }
 }
 
+.gift {
+  animation-duration: 1.5s;
+  animation-name: bounceInUp;
+}
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUpBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.xmas {
+  animation-name: fadeInUpBig;
+  animation-duration: 1.5s;
+}
 @font-face {
   font-family: "Mountains of Christmas Bold";
   src: url(fonts/MountainsofChristmas-Bold.ttf);
